@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block title %}View Card{% endblock %}
+{% block content %}
+<h1>View Encrypted Cards</h1>
+<table style="width: 100%; border-collapse: collapse; margin-top: 20px;">
+    <tr>
+        <th style="border-bottom: 1px solid #ddd; padding: 8px; text-align: left;">Name</th>
+        <th style="border-bottom: 1px solid #ddd; padding: 8px; text-align: left;">Encrypted Data</th>
+    </tr>
+    {% for name, details in cards_data.items() %}
+    <tr>
+        <td style="border-bottom: 1px solid #ddd; padding: 8px;">
+            <a href="#" onclick="showKeys('{{ name }}')">{{ name }}</a>
+        </td>
+        <td style="border-bottom: 1px solid #ddd; padding: 8px;">
+            {{ details['encrypted_data'] }}
+        </td>
+    </tr>
+    <tr id="keys-{{ name }}" style="display: none;">
+        <td colspan="2" style="padding: 8px;">
+            <strong>Public Key:</strong> {{ details['public_key'] }}<br>
+            <strong>Private Key:</strong> {{ details['private_key'] }}
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+
+<script>
+    function showKeys(name) {
+        const row = document.getElementById('keys-' + name);
+        if (row.style.display === 'none') {
+            row.style.display = 'table-row';
+        } else {
+            row.style.display = 'none';
+        }
+    }
+</script>
+{% endblock %}

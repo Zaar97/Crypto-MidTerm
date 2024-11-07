@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block title %}Submit Card{% endblock %}
+{% block content %}
+<h1>Submit Card</h1>
+<form method="post" action="{{ url_for('submit_card') }}">
+    <label for="name">Name on the Credit Card:</label>
+    <input type="text" id="name" name="name" required>
+
+    <label for="card_number">Card Number:</label>
+    <input type="text" id="card_number" name="card_number" required>
+
+    <label for="expiry_date">Expiry Date:</label>
+    <input type="text" id="expiry_date" name="expiry_date" placeholder="MM/YY" required>
+
+    <label for="cvv">CVV:</label>
+    <input type="password" id="cvv" name="cvv" required>
+
+    <button type="submit">Submit</button>
+</form>
+
+{% if success_message %}
+    <div class="success-message">Submit Successful!</div>
+{% endif %}
+{% endblock %}

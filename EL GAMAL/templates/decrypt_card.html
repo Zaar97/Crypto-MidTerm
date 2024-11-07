@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %}Decrypt Card{% endblock %}
+{% block content %}
+<h1>Decrypt Card</h1>
+<form method="post" action="{{ url_for('decrypt_card') }}">
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" required>
+
+    <label for="private_key">Private Key:</label>
+    <input type="text" id="private_key" name="private_key" required>
+
+    <button type="submit">Decrypt</button>
+</form>
+
+{% if decrypted_message %}
+    <div class="success-message">
+        <h3>Decryption Result:</h3>
+        <p><strong>Card Number:</strong> {{ decrypted_message['card_number'] }}</p>
+        <p><strong>Expiry Date:</strong> {{ decrypted_message['expiry_date'] }}</p>
+        <p><strong>CVV:</strong> {{ decrypted_message['cvv'] }}</p>
+    </div>
+{% endif %}
+{% endblock %}
