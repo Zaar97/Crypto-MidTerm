@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Credit Card App{% endblock %}</title>
+    <style>
+        body { 
+            font-family: Arial, sans-serif; 
+            text-align: center; 
+            background-image: linear-gradient(to right, #4a82f7, #8fa1ff); 
+            color: #333; 
+            margin: 0; 
+            padding: 0; 
+            display: flex; 
+            justify-content: center; 
+            align-items: flex-start; 
+            min-height: 100vh; 
+            padding-top: 20px; 
+        }
+        .container { 
+            max-width: 500px; 
+            padding: 30px 20px; 
+            background-color: rgba(255, 255, 255, 0.9); 
+            border-radius: 12px; 
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); 
+            text-align: left; 
+            margin: 20px; 
+        }
+        h1 { 
+            margin-bottom: 20px; 
+            font-size: 1.8em; 
+            color: #4a82f7; 
+            text-align: center; 
+        }
+        label { 
+            display: block; 
+            margin-bottom: 5px; 
+            font-weight: bold; 
+            color: #333; 
+        }
+        input { 
+            width: 100%; 
+            padding: 10px; 
+            font-size: 1em; 
+            border: 1px solid #ccc; 
+            border-radius: 5px; 
+            box-sizing: border-box; 
+            margin-top: 5px; 
+            margin-bottom: 15px; 
+        }
+        button { 
+            width: 100%; 
+            padding: 12px; 
+            font-size: 1em; 
+            font-weight: bold; 
+            color: #fff; 
+            background-color: #4a82f7; 
+            border: none; 
+            border-radius: 5px; 
+            cursor: pointer; 
+            transition: background-color 0.3s ease; 
+        }
+        button:hover { 
+            background-color: #3b6fd8; 
+        }
+        .success-message { 
+            background-color: #d4edda; 
+            color: #155724; 
+            border: 1px solid #c3e6cb; 
+            padding: 10px; 
+            border-radius: 5px; 
+            margin-top: 15px; 
+            text-align: center; 
+        }
+        .navbar {
+            background-color: #4a82f7;
+            padding: 10px;
+            text-align: center;
+        }
+        .navbar a {
+            color: white;
+            padding: 10px;
+            text-decoration: none;
+            font-weight: bold;
+            margin: 0 5px;
+        }
+        .navbar a:hover {
+            background-color: #3b6fd8;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <a href="{{ url_for('submit_card') }}">Submit Card</a>
+        <a href="{{ url_for('view_card') }}">View Card</a>
+        <a href="{{ url_for('decrypt_card') }}">Decrypt</a>
+    </div>
+    <div class="container">
+        {% block content %}{% endblock %}
+    </div>
+</body>
+</html>
